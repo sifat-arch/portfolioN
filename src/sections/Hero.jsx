@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "../components/Button";
 import { ArrowRight } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import AnimatedBorderButton from "../components/AnimatedBorderButton";
 
 const Hero = () => {
   return (
@@ -61,13 +63,53 @@ const Hero = () => {
               </p>
             </div>
             {/* call to action  */}
-            <div>
+            <div className="flex flex-wrap gap-4 animate-fade-in animate-delay-500">
               <Button size="lg">
                 Contact Me <ArrowRight className="w-5 h-5" />
               </Button>
+              <AnimatedBorderButton>Download CV</AnimatedBorderButton>
+            </div>
+            {/* social links */}
+            <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
+              <span className="text-sm text-muted-foreground">Follow Me: </span>
+              {[
+                { icon: <FaGithub size={15}></FaGithub>, href: "#" },
+                { icon: <FaLinkedin size={15}></FaLinkedin>, href: "#" },
+                { icon: <FaTwitter size={15}></FaTwitter>, href: "#" },
+              ].map((social, i) => (
+                <a
+                  href=""
+                  key={i}
+                  className="p-2 rounded-full glass hover:bg-primary-/10 hover:text-primary transition-all duration-300 "
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
-          {/*left colum-text  */}
+          {/*Right colum-text  */}
+          <div className="relative animate-fade-in animation-delay-300 ">
+            {/* profile image */}
+            <div className="relative max-w-md mx-auto">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/30 via-transparent to-primary/10 blur-2xl animate-pulse-glow" />
+              <div className="relative galss rounded-3xl p-2 glow-border">
+                <img
+                  src="/profile.jpg"
+                  alt="profile"
+                  className="w-full aspect-[4/5]ojbect-cover rounded-2xl"
+                />
+
+                {/* floating badge */}
+                 <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
+                    <div>
+                       <div/>
+                       <span>Avilable for work</span>
+                    </div>
+                 </div>
+                {/* stats badge */}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
