@@ -28,7 +28,7 @@ const Navbar = () => {
   }, []);
   return (
     <header
-      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${isScroll ? "glass-strong py-3" : "bg-transparent py-5"}`}
+      className={`fixed z-50 top-0 left-0 right-0 transition-all duration-500 ${isScroll ? "glass-strong py-3" : "bg-transparent py-5"}`}
     >
       <nav className="container mx-auto px-6 flex justify-between items-center">
         <a
@@ -61,7 +61,7 @@ const Navbar = () => {
 
         <button
           className="md:hidden p-2 text-foreground cursor-pointer"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen((prev) => !prev)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -75,12 +75,13 @@ const Navbar = () => {
               <a
                 href={link.href}
                 key={index}
+                onClick={() => setIsOpen(false)}
                 className="text-lg text-muted-foreground hover:text-foreground py-2"
               >
                 {link.label}
               </a>
             ))}
-            <Button>Contact me</Button>
+            <Button onClick={() => setIsOpen(false)}>Contact me</Button>
           </div>
         )}
       </div>
