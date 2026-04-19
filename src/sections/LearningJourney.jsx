@@ -1,45 +1,45 @@
 import React from "react";
 const experiences = [
   {
-    period: "2022 — Present",
-    role: "Senior Frontend Engineer",
-    company: "Tech Innovators Inc.",
+    period: "2022",
+    role: "Started Web Development",
+    company: "Beginning",
     description:
-      "Leading frontend architecture for a suite of fintech products. Implemented micro-frontend architecture, reduced bundle size by 40%, and mentored a team of 5 developers.",
-    technologies: ["React", "TypeScript", "Next.js", "GraphQL"],
+      "Started learning HTML and CSS. Built basic static websites and learned core web fundamentals.",
+    technologies: ["HTML", "CSS"],
+    current: false,
+  },
+  {
+    period: "2023",
+    role: "JavaScript & React",
+    company: "Frontend Growth",
+    description:
+      "Learned JavaScript fundamentals and React. Built interactive UI and improved problem-solving skills.",
+    technologies: ["JavaScript", "React"],
+    current: false,
+  },
+  {
+    period: "2024",
+    role: "Frontend Projects",
+    company: "Hands-on Practice",
+    description:
+      "Built multiple responsive frontend projects using modern tools and improved UI/UX skills.",
+    technologies: ["React", "Tailwind CSS"],
+    current: false,
+  },
+  {
+    period: "2025 — Present",
+    role: "Full-Stack Development",
+    company: "Current Focus",
+    description:
+      "Exploring Next.js and backend development. Building full-stack applications with authentication and database integration.",
+    technologies: ["Next.js", "MongoDB", "Express"],
     current: true,
   },
-  {
-    period: "2020 — 2022",
-    role: "Frontend Engineer",
-    company: "Digital Solutions Co.",
-    description:
-      "Built and maintained multiple React applications for enterprise clients. Introduced automated testing practices that improved code coverage to 85%.",
-    technologies: ["React", "Redux", "Jest", "Cypress"],
-    current: false,
-  },
-  {
-    period: "2019 — 2020",
-    role: "Junior Developer",
-    company: "StartUp Labs",
-    description:
-      "Contributed to the development of a SaaS platform from MVP to production. Collaborated with designers to implement pixel-perfect UI components.",
-    technologies: ["React", "Node.js", "MongoDB", "AWS"],
-    current: false,
-  },
-  {
-    period: "2018 — 2019",
-    role: "Freelance Developer",
-    company: "Self-Employed",
-    description:
-      "Delivered custom web solutions for small businesses and startups. Built 15+ websites and applications, handling everything from design to deployment.",
-    technologies: ["JavaScript", "PHP", "WordPress", "MySQL"],
-    current: false,
-  },
 ];
-const Experience = () => {
+const LearningJourney = () => {
   return (
-    <section id="experience" className="py-32 relative overflow-hidden">
+    <section id="learning-journey" className="py-32 relative overflow-hidden">
       <div
         className="absolute top-1/2 left-1/4 w-96
        h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2"
@@ -51,17 +51,17 @@ const Experience = () => {
             className="text-secondary-foreground text-sm
            font-medium tracking-wider uppercase animate-fade-in"
           >
-            Career Journey
+            My Journey
           </span>
           <h2
             className="text-4xl md:text-5xl font-bold
            mt-4 mb-6 animate-fade-in animation-delay-100
             text-secondary-foreground"
           >
-            Experience that{" "}
+            My learning journey as a{" "}
             <span className="font-serif italic font-normal text-white">
               {" "}
-              speaks volumes.
+              developer
             </span>
           </h2>
 
@@ -69,8 +69,8 @@ const Experience = () => {
             className="text-muted-foreground
            animate-fade-in animation-delay-200"
           >
-            A timeline of my professional growth, from curious beginner to
-            senior engineer leading teams and building products at scale.
+            A timeline of how I started learning web development and gradually
+            built my skills through practice and projects.
           </p>
         </div>
 
@@ -134,4 +134,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default LearningJourney;
