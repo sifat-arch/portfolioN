@@ -19,6 +19,15 @@ const skills = [
   "Figma",
 ];
 const Hero = () => {
+  const handleContactSrcoll = (e) => {
+    e.preventDefault();
+    const contactSection = document.getElementById("contact");
+
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* backgorund image*/}
@@ -78,10 +87,12 @@ const Hero = () => {
             </div>
             {/* call to action  */}
             <div className="flex flex-wrap gap-4 animate-fade-in animate-delay-500">
-              <Button size="lg">
+              <Button size="lg" onClick={handleContactSrcoll}>
                 Contact Me <ArrowRight className="w-5 h-5" />
               </Button>
-              <AnimatedBorderButton>Download CV</AnimatedBorderButton>
+              <a href="/Frontend_Resume.pdf" download="Frontend_Resume.pdf">
+                <AnimatedBorderButton>Download CV</AnimatedBorderButton>
+              </a>
             </div>
             {/* social links */}
             <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
@@ -108,7 +119,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/30 via-transparent to-primary/10 blur-2xl animate-pulse-glow" />
               <div className="relative galss rounded-3xl p-2 glow-border">
                 <img
-                  src="/profile.jpg"
+                  src="/hero.jpg"
                   alt="profile"
                   className="w-full aspect-[4/5]ojbect-cover rounded-2xl"
                 />
@@ -117,16 +128,16 @@ const Hero = () => {
                 <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-sm font-medium">
+                    <span className="text-sm font-bold text-card">
                       Avilable for work
                     </span>
                   </div>
                 </div>
                 {/* stats badge */}
                 <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animate-delay-500">
-                  <div className="text-2xl font-bold text-primary">5</div>
-                  <div className="text-xs text-muted-foreground">
-                    Years of Exp.
+                  <div className="text-2xl font-bold text-primary">8+</div>
+                  <div className="text-xs font-bold text-card ">
+                    Project Completed
                   </div>
                 </div>
               </div>

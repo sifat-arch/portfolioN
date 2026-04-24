@@ -7,6 +7,7 @@ import Testimonials from "@/sections/Testimonials";
 import Contact from "@/sections/Contact";
 import LearningJourney from "./sections/LearningJourney";
 import WhatICanDo from "./sections/WhatICanDo";
+import { Footer } from "./layout/Footer";
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -19,6 +20,7 @@ function App() {
         <LearningJourney />
         <WhatICanDo />
         <Contact />
+        <Footer />
       </main>
     </div>
   );

@@ -26,6 +26,15 @@ const Navbar = () => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSmoothScroll = (e) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <header
       className={`fixed z-50 top-0 left-0 right-0 transition-all duration-500 ${isScroll ? "glass-strong py-3" : "bg-transparent py-5"}`}
@@ -54,7 +63,9 @@ const Navbar = () => {
 
         {/* cta button */}
         <div className="hidden md:block">
-          <Button size="sm">Contact me</Button>
+          <Button size="sm" onClick={handleSmoothScroll}>
+            Contact me
+          </Button>
         </div>
 
         {/* mobile menu button */}
@@ -81,7 +92,8 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button onClick={() => setIsOpen(false)}>Contact me</Button>
+
+            <Button onClick={handleSmoothScroll}>Contact me</Button>
           </div>
         )}
       </div>
