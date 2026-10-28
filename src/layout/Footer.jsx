@@ -1,11 +1,8 @@
 import React from "react";
 import { BsGithub } from "react-icons/bs";
-
 import { FaFacebook } from "react-icons/fa";
-
 import { LiaLinkedin } from "react-icons/lia";
 
-// লজিক এবং ডেটা আলাদা রাখা ভালো practice
 const socialLinks = [
   {
     icon: BsGithub,
@@ -27,7 +24,8 @@ const socialLinks = [
 const footerLinks = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
+  { href: "#learning-journey", label: "Journey" },
+  { href: "#what-i-can-do", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -47,7 +45,7 @@ export const Footer = () => {
               SU<span className="text-primary">.</span>
             </a>
             <p className="text-sm text-muted-foreground mt-2">
-              © {currentYear} Pedro Machado. All rights reserved.
+              © {currentYear} Sifat Ullah. All rights reserved.
             </p>
           </div>
 
@@ -87,3 +85,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

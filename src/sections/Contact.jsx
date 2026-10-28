@@ -15,19 +15,19 @@ const contactInfo = [
     icon: Mail,
     title: "Email",
     value: "sifatullah1004@gmail.com",
-    href: "mailto:Hs2pW@example.com",
+    href: "mailto:sifatullah1004@gmail.com",
   },
   {
     icon: Phone,
     title: "Phone",
-    value: "01838071748",
-    href: "tel:+15551234567",
+    value: "(+880) 1838071748",
+    href: "tel:+8801838071748",
   },
   {
     icon: MapPin,
     title: "Location",
     value: "Mymensingh, Bangladesh",
-    href: "#",
+    href: "https://maps.google.com/?q=Mymensingh,Bangladesh",
   },
 ];
 
@@ -38,11 +38,12 @@ const Contact = () => {
     message: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState("success");
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleSumbit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setSubmitStatus(null);
     try {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -50,7 +51,7 @@ const Contact = () => {
 
       if (!serviceId || !templateId || !publicKey) {
         throw new Error(
-          "emailJS configuratrion is missing,please check your env files",
+          "EmailJS configuration is missing. Please check your env variables.",
         );
       }
       await emailjs.send(
@@ -66,7 +67,7 @@ const Contact = () => {
 
       setSubmitStatus({
         type: "success",
-        message: "Message Sent Successfully!I'll get back to you soon.",
+        message: "Message sent successfully! I'll get back to you soon.",
       });
       setFormData({
         name: "",
@@ -75,42 +76,47 @@ const Contact = () => {
       });
     } catch (err) {
       console.error("Emailjs error", err);
+      setSubmitStatus({
+        type: "error",
+        message: err.message || "Something went wrong. Please try again later.",
+      });
     } finally {
       setIsLoading(false);
     }
   };
+
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full">
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
+        <div className="text-center max-w-3xl mx-auto mb-16 reveal">
+          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase">
             Get In Touch
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-secondary-foreground">
             Let's build{" "}
             <span className="font-serif italic font-normal text-white">
               something great.
             </span>
           </h2>
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
+          <p className="text-muted-foreground">
             Have a project in mind? I'd love to hear about it. Send me a message
             and let's discuss how we can work together.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <div className="glass p-8 rounded-3xl border border-primary/30 animmation-fade-in animation-delay-300">
+          <div className="glass p-8 rounded-3xl border border-primary/30 reveal-left">
             <form className="space-y-6" onSubmit={handleSumbit}>
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium mb-2"
+                  className="block text-sm font-medium mb-2 text-foreground"
                 >
                   Name
                 </label>
@@ -123,13 +129,13 @@ const Contact = () => {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   placeholder="Your Name"
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-foreground"
                 />
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium mb-2"
+                  className="block text-sm font-medium mb-2 text-foreground"
                 >
                   Email
                 </label>
@@ -142,13 +148,13 @@ const Contact = () => {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   placeholder="Your Email"
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-foreground"
                 />
               </div>
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium mb-2"
+                  className="block text-sm font-medium mb-2 text-foreground"
                 >
                   Message
                 </label>
@@ -161,12 +167,12 @@ const Contact = () => {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   placeholder="Your Message"
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none text-foreground"
                 />
               </div>
 
               <Button
-                className="w-full"
+                className="w-full justify-center"
                 type="submit"
                 size="lg"
                 disabled={isLoading}
@@ -174,34 +180,34 @@ const Contact = () => {
                 {isLoading ? (
                   "Sending..."
                 ) : (
-                  <>
+                  <span className="flex items-center gap-2">
                     Send Message <Send className="w-5 h-5" />
-                  </>
-                )}
-
-                {submitStatus.type && (
-                  <div
-                    className={`flex items-center gap-3 p-4 rounded-xl ${
-                      submitStatus.type === "success"
-                        ? "bg-green-500/10 border border-green-500/20 text-green-400"
-                        : "bg-red-500/10 border border-red-500/20 text-red-400"
-                    }`}
-                  >
-                    {submitStatus.type === "sussess" ? (
-                      <CheckCircle className="w-5 h-5 flex-shirink-0" />
-                    ) : (
-                      <AlertCircle className="w-5 h-5 flex-shirink-0" />
-                    )}
-
-                    <p className="text-sm">{submitStatus.message}</p>
-                  </div>
+                  </span>
                 )}
               </Button>
+
+              {submitStatus && (
+                <div
+                  className={`flex items-center gap-3 p-4 rounded-xl ${
+                    submitStatus.type === "success"
+                      ? "bg-green-500/10 border border-green-500/20 text-green-400"
+                      : "bg-red-500/10 border border-red-500/20 text-red-400"
+                  }`}
+                >
+                  {submitStatus.type === "success" ? (
+                    <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                  ) : (
+                    <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                  )}
+                  <p className="text-sm">{submitStatus.message}</p>
+                </div>
+              )}
             </form>
           </div>
+
           {/* contact info */}
-          <div className="space-y-6 animate-fade-in animation-delay-400">
-            <div className="glass rounded-3xl p-8">
+          <div className="space-y-6 reveal-right">
+            <div className="glass rounded-3xl p-8 border border-border/50">
               <h3 className="text-xl font-semibold mb-6">
                 Contact Information
               </h3>
@@ -210,16 +216,20 @@ const Contact = () => {
                   <a
                     key={i}
                     href={item.href}
-                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-surface transition-colors group"
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel="noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-surface/80 transition-colors group"
                   >
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                       <item.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground">
-                        {item.label}
+                      <div className="text-xs text-muted-foreground uppercase tracking-wider">
+                        {item.title}
                       </div>
-                      <div className="font-medium">{item.value}</div>
+                      <div className="font-medium text-foreground group-hover:text-primary transition-colors">
+                        {item.value}
+                      </div>
                     </div>
                   </a>
                 ))}
@@ -229,13 +239,16 @@ const Contact = () => {
             {/* Availability Card */}
             <div className="glass rounded-3xl p-8 border border-primary/30">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                <span className="font-medium">Currently Available</span>
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
+                </span>
+                <span className="font-semibold text-white">Currently Available</span>
               </div>
-              <p className="text-muted-foreground text-sm">
-                I'm currently open to new opportunities and exciting projects.
-                Whether you need a full-time engineer or a freelance consultant,
-                let's talk!
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                I'm currently open to new opportunities and exciting full-stack projects.
+                Whether you need a dedicated software engineer or a collaborator,
+                let's connect!
               </p>
             </div>
           </div>

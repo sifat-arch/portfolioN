@@ -4,50 +4,47 @@ import { Code2, Database, ShieldCheck, Globe, Layers } from "lucide-react";
 const whatICanDo = [
   {
     title: "Build Responsive & Modern UI",
-    desc: "Creating stunning, mobile-first interfaces using React and Tailwind CSS.",
+    desc: "Creating stunning, mobile-first interfaces using React, Next.js, and Tailwind CSS.",
     icon: Code2,
   },
   {
     title: "Full-Stack Applications",
-    desc: "Developing scalable full-stack applications with Next.js and MongoDB.",
+    desc: "Developing scalable full-stack applications with Next.js, PostgreSQL, Prisma ORM, and MongoDB.",
     icon: Database,
   },
   {
     title: "Secure Authentication",
-    desc: "Implementing robust authentication systems with JWT and NextAuth.js.",
+    desc: "Implementing robust authentication systems with JWT, HTTP-only cookies, Redis OTP, and OAuth.",
     icon: ShieldCheck,
   },
   {
-    title: "API Integration",
-    desc: "Expertise in REST APIs, GraphQL, and dynamic data handling.",
+    title: "API Integration & Development",
+    desc: "Building clean RESTful APIs, payment gateways (Stripe), and real-time state management.",
     icon: Globe,
   },
   {
-    title: "Reusable Components",
-    desc: "Designing scalable, maintainable, and reusable component architectures.",
+    title: "Reusable Component Architecture",
+    desc: "Designing scalable, maintainable, and type-safe component libraries with TypeScript and Shadcn UI.",
     icon: Layers,
   },
 ];
 
 const WhatICanDo = () => {
   return (
-    <section className="py-20  text-white" id="what-i-can-do">
+    <section className="py-20 text-white relative" id="what-i-can-do">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div
-            className="text-secondary-foreground text-sm
-           font-medium tracking-wider uppercase animate-fade-in"
-          >
-            I Can Do
+        <div className="text-center mb-16 reveal">
+          <div className="text-secondary-foreground text-sm font-medium tracking-wider uppercase">
+            Capabilities
           </div>
-          <h2 className="text-4xl mb:text-5xl font-bold mt-4 mb-5 animate-fade-in animation-delay-100 text-secondary-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-5 text-secondary-foreground">
             What I Can{" "}
             <span className="font-serif italic font-normal text-white">Do</span>
           </h2>
-          <p className="text-muted-foreground animate-muted-froeground animate-fade-in aniation-delay-200">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Delivering high-quality solutions using modern technologies to solve
-            real-world problems.
+            real-world problems and scale businesses.
           </p>
         </div>
 
@@ -58,9 +55,9 @@ const WhatICanDo = () => {
             return (
               <div
                 key={idx}
-                className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10 overflow-hidden hover:border-[var(--hover-border)] animate-fade-in"
+                className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10 overflow-hidden hover:border-[var(--hover-border)] reveal"
                 style={{
-                  animationDelay: `${(idx + 1) * 150}ms`,
+                  transitionDelay: `${(idx % 3) * 120}ms`,
                   "--hover-border": "#20b2a6",
                 }}
               >

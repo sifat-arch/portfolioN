@@ -39,9 +39,7 @@
 
 @layer components {
   .glass {
-    background-color:
-      var(--color-surface) 50%,
-      transparent;
+    background-color: color-mix(in srgb, var(--color-surface) 60%, transparent);
     backdrop-filter: blur(16px);
     border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
   }
@@ -126,25 +124,25 @@
     animation: marquee 30s linear infinite;
   }
 
-  .animate-delay-100 {
+  .animate-delay-100, .animation-delay-100 {
     animation-delay: 100ms;
   }
-  .animate-delay-200 {
+  .animate-delay-200, .animation-delay-200 {
     animation-delay: 200ms;
   }
-  .animate-delay-300 {
+  .animate-delay-300, .animation-delay-300 {
     animation-delay: 300ms;
   }
-  .animate-delay-400 {
+  .animate-delay-400, .animation-delay-400 {
     animation-delay: 400ms;
   }
-  .animate-delay-500 {
+  .animate-delay-500, .animation-delay-500 {
     animation-delay: 500ms;
   }
-  .animate-delay-600 {
+  .animate-delay-600, .animation-delay-600 {
     animation-delay: 600ms;
   }
-  .animate-delay-800 {
+  .animate-delay-800, .animation-delay-800 {
     animation-delay: 800ms;
   }
 
@@ -171,5 +169,50 @@
     box-shadow:
       0 0 40px color-mix(in srgb, var(--color-primary) 35%, transparent),
       0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
+  }
+
+  /* Scroll Reveal Utilities */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-35px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(35px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.94);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-scale.is-visible {
+    opacity: 1;
+    transform: scale(1);
   }
 }
